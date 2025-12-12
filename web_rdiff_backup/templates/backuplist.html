@@ -1,0 +1,45 @@
+$def with (backup_computer, backup_dir, backups, prev_offset, next_offset, last_offset)
+
+<h2>backups: $backup_computer &rarr; $backup_dir</h2>
+
+$if len(backups) > 0:
+    <table>
+        <tr>
+            <th>start</th>
+            <th>end</th>
+            <th>elapsed time</th>
+            <th>changed size</th>
+            <th>errors</th>
+            <th></th>
+        </tr>
+    $for backup in backups:
+        <tr>
+            <td>$backup.StartTime</td>
+            <td>$backup.EndTime</td>
+            <td align="center">$backup.ElapsedTime</td>
+            <td align="center">$backup.TotalDestinationSizeChange</td>
+            <td align="center">$backup.Errors</td>
+            <td><a href="/backupdetail/?backup_computer=$backup_computer&backup_dir=$backup_dir&backup_completed=$backup.backup_completed">detail</a></td>
+        </tr>  
+    </table>  
+
+
+    <p>
+    $if prev_offset is not None:
+        <a href="/backuplist/?backup_computer=$backup_computer&backup_dir=$backup_dir"> first </a>|
+        <a href="/backuplist/?backup_computer=$backup_computer&backup_dir=$backup_dir&prev_offset=$prev_offset"> prev </a>
+    $else:
+        <font color="silver">first | prev </font>
+
+    $if next_offset is not None:
+        |<a href="/backuplist/?backup_computer=$backup_computer&backup_dir=$backup_dir&next_offset=$next_offset"> next </a>|
+        <a href="/backuplist/?backup_computer=$backup_computer&backup_dir=$backup_dir&next_offset=$last_offset"> last </a>
+    $else:
+        <font color="silver">| next | last </font>
+    </p>
+
+
+$else:
+    <p>
+    ...no backups found!
+    </p>

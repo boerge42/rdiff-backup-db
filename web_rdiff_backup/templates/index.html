@@ -1,0 +1,35 @@
+$def with(backups)
+
+<h2>last backups</h2>
+
+$if len(backups) > 0:
+    <table>
+        <tr>
+            <th>backup computer</th>
+            <th>backup dir</th>
+            <th>backup completed</th>
+            <th>to old</th>
+            <th>elapsed time</th>
+            <th>changed size</th>
+            <th>errors</th>
+            <th></th>
+            <th></th>
+        </tr>
+    $for backup in backups:
+        <tr>
+            <td>$backup.backup_computer</td>
+            <td>$backup.backup_dir</td>
+            <td>$backup.backup_completed</td>
+            <td align="center">$backup.to_old</td>
+            <td align="center">$backup.ElapsedTime</td>
+            <td align="center">$backup.TotalDestinationSizeChange</td>
+            <td align="center">$backup.Errors</td>
+            <td><a href="/backupdetail/?backup_computer=$backup.backup_computer&backup_dir=$backup.backup_dir&backup_completed=$backup.backup_completed">detail</a></td>
+            <td><a href="/backuplist/?backup_computer=$backup.backup_computer&backup_dir=$backup.backup_dir">list</a></td>
+        </tr>  
+    </table>  
+
+$else:
+    <p>
+    ...no backups found!
+    </p>
