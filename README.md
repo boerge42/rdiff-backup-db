@@ -75,10 +75,11 @@ Sortierreihenfolge: jüngstes --> ältestes Backup; Link **detail** wie oben bes
 
 ### Inhalt eines (ausgewählten) rdiff-backup-Statistikeintrages
 ![backupdetails.html](images/backupdetails_html.png)
-Die Bedeutung der einzelnen Werte ist der Beschreibung auf der Webseite unten bzw. der [originalen Dokumentation]() zu entnehmen.
+Die Bedeutung der einzelnen Werte ist der Beschreibung auf der Webseite unten bzw. der [originalen Dokumentation](https://rdiff-backup.net/FAQ.html#what_do_the_various_fields_mean_in_the_session_statistics_and_directory_statistics_files) zu entnehmen.
 
 ## ToDo
 - rdiff-backup-Error-Logs mit in DB aufnehmen/anzeigen?
 
 ---
 Uwe Berger; 2025
+
