@@ -3,30 +3,3 @@ $def with (backup_computer, backup_dir, backup_completed, txt_statistic)
 <h2>backup details: $backup_computer &rarr; $backup_dir &rarr; $backup_completed</h2>
 
 $:txt_statistic
-
-<br><br>
-<p style="font-size: small;">
-From the <a href="https://rdiff-backup.net/FAQ.html#what_do_the_various_fields_mean_in_the_session_statistics_and_directory_statistics_files">rdiff-backup documentation</a>:
-<br><br>
-<b>StartTime</b> and <b>EndTime</b> are measured in seconds since the epoch. <b>ElapsedTime</b> is just EndTime - StartTime, the length of the rdiff-backup session.
-<br><br>
-<b>SourceFiles</b> are the number of files found in the source directory, and <b>SourceFileSize</b> is the total size of those files. <b>MirrorFiles</b> are the number 
-of files found in the mirror directory (not including the rdiff-backup-data directory) and <b>MirrorFileSize</b> is the total size of those files. All sizes 
-are in bytes. If the source directory hasn’t changed since the last backup, MirrorFiles == SourceFiles and SourceFileSize == MirrorFileSize.
-<br><br>
-<b>NewFiles</b> and <b>NewFileSize</b> are the total number and size of the files found in the source directory but not in the mirror directory. They are new as of 
-the last backup.
-<br><br>
-<b>DeletedFiles</b> and <b>DeletedFileSize</b> are the total number and size of the files found in the mirror directory but not the source directory. They have been 
-deleted since the last backup.
-<br><br>
-<b>ChangedFiles</b> are the number of files that exist both on the mirror and on the source directories and have changed since the previous backup. 
-<b>ChangedSourceSize</b> is their total size on the source directory, and <b>ChangedMirrorSize</b> is their total size on the mirror directory.
-<br><br>
-<b>IncrementFiles</b> is the number of increment files written to the rdiff-backup-data directory, and <b>IncrementFileSize</b> is their total size. Generally one 
-increment file will be written for every new, deleted, and changed file.
-<br><br>
-<b>TotalDestinationSizeChange</b> is the number of bytes the destination directory as a whole (mirror portion and rdiff-backup-data directory) has grown during 
-the given rdiff-backup session. This is usually close to IncrementFileSize + NewFileSize - DeletedFileSize + ChangedSourceSize - ChangedMirrorSize, but 
-it also includes the space taken up by the hardlink_data file to record hard links.
-</p>
